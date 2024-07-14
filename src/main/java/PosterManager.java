@@ -24,7 +24,7 @@ public class PosterManager {
     }
 
     public Poster[] findLast() {
-        int tmpLength = 5;
+        int tmpLength = limit;
         if (films.length < limit) {
             tmpLength = films.length;
         } else {
