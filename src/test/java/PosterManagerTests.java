@@ -44,18 +44,33 @@ public class PosterManagerTests {
     }
 
     @Test
-
     public void getLimitLastFilms() {
+        PosterManager mng = new PosterManager(3);
+        mng.addNewFilm(item1);
+        mng.addNewFilm(item2);
+        mng.addNewFilm(item3);
+        mng.addNewFilm(item4);
+        mng.addNewFilm(item5);
         Poster[] expected = {item5, item4, item3};
-        manager.limit = 3;
-        Poster[] actual = manager.findLast();
+        Poster[] actual = mng.findLast();
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void getLengthOfArrayIsLessThanLimit() {
+        PosterManager mng = new PosterManager(4);
+        mng.addNewFilm(item1);
+        mng.addNewFilm(item2);
+        mng.addNewFilm(item3);
+        Poster[] expected = {item3, item2, item1};
+        Poster[] actual = mng.findLast();
         Assertions.assertArrayEquals(expected, actual);
     }
 
     @Test
     public void getMoreLimitLastFilms() {
+        PosterManager mng = new PosterManager(6);
         Poster[] expected = {item5, item4, item3, item2, item1};
-        manager.limit = 7;
         Poster[] actual = manager.findLast();
         Assertions.assertArrayEquals(expected, actual);
     }
@@ -64,7 +79,7 @@ public class PosterManagerTests {
     public void getLimitTest() {
         int expected = 4;
         PosterManager mng = new PosterManager(4);
-        int actual = mng.limit;
+        int actual = mng.getLimit();
         Assertions.assertEquals(expected, actual);
     }
 }

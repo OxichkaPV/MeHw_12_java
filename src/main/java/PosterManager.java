@@ -1,6 +1,6 @@
 public class PosterManager {
     private Poster[] films = new Poster[0];
-    protected int limit;
+    private int limit;
 
     public PosterManager() {
         this.limit = 5;
@@ -8,6 +8,10 @@ public class PosterManager {
 
     public PosterManager(int limit) {
         this.limit = limit;
+    }
+
+    public int getLimit() {
+        return this.limit;
     }
 
     public void addNewFilm(Poster item) {
@@ -24,7 +28,7 @@ public class PosterManager {
     }
 
     public Poster[] findLast() {
-        int tmpLength = limit;
+        int tmpLength;
         if (films.length < limit) {
             tmpLength = films.length;
         } else {
